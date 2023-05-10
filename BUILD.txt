@@ -1,0 +1,11 @@
+Target: mips-unknown-linux-musl
+Host tools required: mips-linux-gnu-ld (binutils)
+
+- statically linked
+cargo \
+    --config 'target.mips-unknown-linux-musl.rustflags=[
+        "-C", "linker=mips-linux-gnu-ld",
+        "-C", "link-self-contained=y",
+        "-C", "target-feature=+crt-static"
+    ]' \
+    build --target mips-unknown-linux-musl
